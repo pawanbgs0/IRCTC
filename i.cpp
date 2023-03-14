@@ -125,22 +125,15 @@ void RouteMap::inputStations()
     }
 }
 
-void RouteMap::buildGraph()
+void RouteMap::buildGraph(vector<EdgeNode> &edges)
 {
-    int edges;
-
-    int totalStation = this->rs.getTotalStations();
-
-    for (int i = 0; i < totalStation; i++)
+    for (auto &it: edges)
     {
-        this->adjList.push_back(vector<int>(0));
-    }
+        Station src = it.source;
+        Station dest = it.dest;
+        int distance = it.distance;
 
-    cout << "Enter the No. of edges: ";
-    cin >> edges;
-
-    for (int i = 0; i < edges; i++)
-    {
-        
+        adjList[src].push_back({dest, distance});
     }
 }
+

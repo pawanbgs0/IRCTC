@@ -67,13 +67,21 @@ class Train
 
 int Train::trainConuter = 100;
 
+class EdgeNode
+{
+    public:
+        Station source;
+        Station dest;
+        int distance;
+};
+
 class RouteMap // Graph
 {
     RailwaySystem rs;
-    vector<vector<int>> adjList;
+    map<Station, vector<pair<Station, int>>> adjList; // {src, {vec(dest), distance}}
 
     public:
         void inputTrains();
         void inputStations();
-        void buildGraph();
+        void buildGraph(vector<EdgeNode> &edges);
 };
